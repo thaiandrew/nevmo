@@ -1,0 +1,20 @@
+<h2 class="text-center">Register</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+  <div class="mb-3">
+    <label for="firstname" class="form-label">First Name</label>
+    <input type="text" id="firstname" name="firstname" formControlName="firstname" class="form-control" placeholder="Enter first name">
+  </div>
+  <div class="mb-3">
+    <label for="lastname" class="form-label">Last Name</label>
+    <input type="text" id="lastname" name="lastname" formControlName="lastname" class="form-control" placeholder="Enter last name">
+  </div>
+  <div class="mb-3">
+    <label for="username" class="form-label">Username</label>
+    <input type="text" id="username" name="username" formControlName="username" class="form-control" placeholder="Enter username">
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="text" id="password" name="password" formControlName="password" class="form-control" placeholder="Enter password">
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Register</button>
+</form>

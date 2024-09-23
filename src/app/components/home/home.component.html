@@ -1,0 +1,48 @@
+<div class="container text-center p-4 p-md-5 border rounded-3 bg-body-tertiary">
+  <div class="row mb-5">
+    <div class ="col">
+      <h3>{{ user.firstName }} {{ user.lastName }}</h3>
+      <h6>{{ '@' + user.username }}</h6>
+    </div>
+    <div class="col">
+      <h3>Balance</h3>
+      <h6>${{ user.balance }}</h6>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="card col">
+      <form [formGroup]="sendForm" class="card-body">
+        <label for="receiver" class="form-label card-title">Send To</label><br>
+        <input type="text" id="receiver" name="receiver" formControlName="receiver" class="form-control" placeholder="Enter receiver's username"><br>
+        <label for="sendAmount" class="form-label">Send Amount</label><br>
+        <input type="number" id="sendAmount" name="sendAmount" formControlName="sendAmount" class="form-control"><br>
+        <button type="button" class="btn btn-primary" (click)="send()" [disabled]="!sendForm.valid">Send</button><br>
+      </form>
+    </div>
+    <div class="card col">
+      <form [formGroup]="depositForm" class="card-body">
+        <label for="deposit" class="form-labe card-title">Deposit Money</label><br>
+        <input type="number" id="deposit" name="deposit" formControlName="deposit" class="form-control"><br>
+        <button type="button" class="btn btn-outline-primary" (click)="deposit()" [disabled]="!depositForm.valid">Deposit</button><br>
+      </form>
+    </div>
+    <div class="card col">
+      <form [formGroup]="withdrawForm" class="card-body">
+        <label for="withdraw" class="form-label card-title">Withdraw Money</label><br>
+        <input type="number" id="withdraw" name="withdraw" formControlName="withdraw" class="form-control"><br>
+        <button type="button" class="btn btn-outline-secondary" (click)="withdraw()" [disabled]="!withdrawForm.valid">Withdraw</button><br>
+      </form>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class = "col">
+      <h3>Transaction History</h3>
+      <ul>
+        @for (transaction of user.transactions; track transaction)
+        {
+          <li>{{ transaction }}</li>
+        }
+      </ul>
+    </div>
+  </div>
+</div>
